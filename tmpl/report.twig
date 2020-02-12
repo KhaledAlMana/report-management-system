@@ -1,0 +1,36 @@
+{% extends 'layout.twig' %}
+
+{% block contents %}
+
+	<h2>Title:  {{ report.report.title }}	</h2>
+	<h4>Status: 	
+		{% if report.report.isPublic %}
+	 	<span class="btn btn-success"> Public </span>
+		 {% else %}
+	 	<span class="btn btn-secondary"> Restricted </span>
+		{% endif %}
+	</h4>
+	<br>
+	<h4>Description:</h4>
+	<p> {{report.report.description }} </p>
+
+	<br>
+	<h4>Attachments:</h4>
+	{% for attachment in report.attachments %}
+	<a href="{{ attachment.path }}" class="btn btn-success"> {{ attachment.name }} </a>
+	{% endfor %}
+	<br>
+	<br>
+
+	<p>
+		Tags: 	{% for tag in report.tags %}
+		<span class="badge badge-info"> {{ tag }} </span>
+		{% endfor %}
+	</p>
+	<p>Created At: {{ report.report.createdAt }}</p>
+	<p>Modified At: {{ report.report.modifiedAt }}</p>
+	
+	<button type="submit" class="btn btn-primary">Update</button>
+
+
+{% endblock %}

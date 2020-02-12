@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block contents %}
+	<h1>Profile - {{ user.firstName }} {{ user.lastName }}</h1>
+
+	<form action="{{ url_for('profile') }}" method="post">
+		
+		<div class="form-group">
+			<label for="fname">First Name</label>
+			<input type="text" name="firstName" class="form-control" id="fname" placeholder="Enter First Name" value="{{user.firstName}}" required>
+		</div>
+
+		<div class="form-group">
+			<label for="lname">Last Name</label>
+			<input type="text" name="lastName" class="form-control" id="lname" placeholder="Enter Last Name" value="{{user.lastName}}" required>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="text" name="email" class="form-control" id="email" placeholder="Enter Email" value="{{user.email}}" disabled>
+		</div>
+	
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" name="password" class="form-control" id="password" placeholder="Password" >
+		</div>
+		<div class="form-group">
+			<label for="cpassword">Confirm Password</label>
+			<input type="password" name="cpassword" class="form-control" id="cpassword" placeholder="Password" >
+		</div>
+		<p>Created At: {{ user.createdAt }}</p>
+		<p>Modified At: {{ user.modifiedAt }}</p>
+
+		<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+
+
+{% endblock %}

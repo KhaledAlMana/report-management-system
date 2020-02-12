@@ -1,0 +1,50 @@
+{% extends 'layout.twig' %}
+{# This Twig is Shared Between Home and Reports Pages #}
+
+{% block contents %}
+
+
+	<h2 class="mt-4">
+		{% if is_current_url('home') %} My Latest Reports 
+		{% else %}
+		Reports
+		{% endif %}
+	</h2>
+
+	<div class="table-responsive">
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th scope="col">Title</th>
+					<th scope="col">Owner</th>
+					<th scope="col">Created At</th>
+					<th scope="col">Tags</th>
+					<th scope="col">View</th>
+				</tr>
+			</thead>
+			<tbody>
+			    {% for report in reports %}
+				<tr>
+					<td>
+						{{ report.title }}
+					</td>
+					<td>
+						{{ report.firstName }} {{ report.lastName }}
+					</td>
+					<td>
+						{{ report.createdAt }}
+					</td>
+					<td>
+						{% for tag in report.tags %}
+						<span class="badge badge-info"> {{ tag }} </span>
+						{% endfor %}
+					</td>
+					<td>
+						<a href="/report/{{ report.reportID }}" class="btn btn-primary">View</button>
+					</td>
+				</tr>
+    			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
