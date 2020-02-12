@@ -1,4 +1,4 @@
-# Slim 4 MVC Skeleton
+# Report Management System
 
 This is a report management system project upon request and it uses the [Slim4 Framework](http://www.slimframework.com/):
 
